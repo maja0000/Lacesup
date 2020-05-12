@@ -5,12 +5,11 @@ import Footer from './components/Footer/Footer';
 import DisplayCustomShoes from './components/ChooseLacesFeature/DisplayCustomShoes';
 function App() {
   return (
-    <div>
-      <NavBar />
-      <div className='content'>
+    <div className="App">
+      <div className="content">
         <NavBar />
+        <DisplayCustomShoes />
       </div>
-      <DisplayCustomShoes />
       <Footer />
     </div>
   );

@@ -1,11 +1,8 @@
-/* @import '../../Utils/Colors.js'; */
-
 .footer {
   height: 50px;
   width: 100%;
   padding: 10px;
   background-color: #343333;
-  /* color: ${Colors.lightYellow}; */
   color: #fcb536;
   position: flex;
   flex-shrink: 0;
