@@ -1,8 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ShoeCard from './ShoeCard';
+import Button from './Button/ButtonBuy';
+import Slider from './Slider/Slider';
+import Colors from '../.././Utils/Colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,7 +13,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+  },
+  color: {
+    color: 'grey',
   },
 }));
 
@@ -25,18 +29,18 @@ function ChangeLaces() {
           <ShoeCard />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Paper className={classes.paper}>Shoe slider</Paper>
+          <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <h2>CHOOSE A COLOR FOR THE SNEAKERS</h2>
-          <Paper className={classes.paper}>COLORS</Paper>
+          <h3 className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</h3>
+          <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <h2>CHOOSE YOUR LACES</h2>
-          <Paper className={classes.paper}>xs=12</Paper>
+          <h3 className={classes.color}>CHOOSE YOUR LACES</h3>
+          <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <Paper className={classes.paper}>BUY THESE LACES!</Paper>
+          <Button />
         </Grid>
       </Grid>
     </div>
