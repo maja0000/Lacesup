@@ -1,7 +1,12 @@
 import React from 'react';
+import ChangeLaces from './ChangeLaces';
 
-function Name() {
-  return <div></div>;
+function DisplayCustomShoes() {
+  return (
+    <div>
+      <ChangeLaces />
+    </div>
+  );
 }
 
-export default Name;
+export default DisplayCustomShoes;
