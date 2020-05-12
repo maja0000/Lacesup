@@ -2,7 +2,8 @@
   height: 50px;
   width: 100%;
   padding: 10px;
-  background-color: antiquewhite;
+  background-color: #343333;
+  color: #fcb536;
   position: flex;
   flex-shrink: 0;
 }
