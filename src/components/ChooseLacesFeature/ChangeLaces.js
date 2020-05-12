@@ -19,20 +19,20 @@ function ChangeLaces() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
+      <Grid container justify='center' alignItems='stretch' spacing={3}>
+        <Grid item xs={12} sm={6} md={6} lg={6}>
           <Paper className={classes.paper}>xs=12</Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={6} lg={6}>
           <Paper className={classes.paper}>xs=12</Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={3} md={6} lg={6}>
           <Paper className={classes.paper}>xs=12</Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={3} md={6} lg={6}>
           <Paper className={classes.paper}>xs=12</Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={3} md={6} lg={6}>
           <Paper className={classes.paper}>xs=12</Paper>
         </Grid>
       </Grid>
