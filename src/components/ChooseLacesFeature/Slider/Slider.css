@@ -1,0 +1,16 @@
+.slider-container {
+  width: 500px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border: 1px solid #d0d9db;
+}
+.slider-element {
+  height: 80%;
+  width: 100px;
+  flex: 0 0 auto;
+  margin-right: 5px;
+  border: 1px solid #d0d9db;
+}
