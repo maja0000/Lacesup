@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from './Button/ButtonBuy';
 import Slider from './Slider/Slider';
+import SliderColors from './Slider/SliderColors';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -26,14 +28,17 @@ function ChangeLaces() {
           <Paper className={classes.paper}>Big shoe card</Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
+          {/* <Paper className={classes.paper}>Shoe slider</Paper> */}
           <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
           <h2>CHOOSE A COLOR FOR THE SNEAKERS</h2>
+          <SliderColors />{' '}
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
           <h2>CHOOSE YOUR LACES</h2>
           <Slider />
+          {/* <Paper className={classes.paper}>xs=12</Paper> */}
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
           <Button />
