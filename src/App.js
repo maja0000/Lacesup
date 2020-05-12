@@ -7,10 +7,11 @@ import Grid from '@material-ui/core/Grid';
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <div className='content'></div>
-      <DisplayCustomShoes />
+    <div className='App'>
+      <div className='content'>
+        <NavBar />
+        <DisplayCustomShoes />
+      </div>
       <Footer />
     </div>
   );
