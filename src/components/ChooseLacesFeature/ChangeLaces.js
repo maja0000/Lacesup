@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import ShoeCard from './ShoeCard';
 import Button from './Button/ButtonBuy';
 import Slider from './Slider/Slider';
-import Colors from '../.././Utils/Colors';
+import SliderColors from './Slider/SliderColors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,15 +29,17 @@ function ChangeLaces() {
           <ShoeCard />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
+          {/* <Paper className={classes.paper}>Shoe slider</Paper> */}
           <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
           <h3 className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</h3>
-          <Slider />
+          <SliderColors />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
           <h3 className={classes.color}>CHOOSE YOUR LACES</h3>
           <Slider />
+          {/* <Paper className={classes.paper}>xs=12</Paper> */}
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
           <Button />
