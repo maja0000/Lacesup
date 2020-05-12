@@ -4,7 +4,7 @@ import './Slider.css';
 function Slider() {
   return (
     <div className="slider-container">
-      <div className="slider-element" />
+      <div className="slider-element" style={{ cursor: ' pointer' }} />
       <div className="slider-element" />
       <div className="slider-element" />
       <div className="slider-element" />
