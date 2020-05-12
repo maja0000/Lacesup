@@ -1,7 +1,8 @@
 const Color = {
-    mustardYellow: "#f9b334",
+    mainWhite: "#FFFFFF",
+    mainGrey: "#BBBBBB",
     lightYellow: "#FCB536",
+    darkYellow: "#f9b334",
     lightBlack: "#343333",
     darkBlack: "#666",
-    mainGrey: "#B0B0B0"
 }
