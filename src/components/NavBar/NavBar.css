@@ -1,0 +1,14 @@
+.navbar {
+  height: 70px;
+  width: 100%;
+  padding: 10px;
+  position: flex;
+}
+.logo {
+  background-image: url('../../pictures/logo.png');
+  height: 60px;
+  width: auto;
+  background-position: center;
+  background-size: 120px;
+  background-repeat: no-repeat;
+}
