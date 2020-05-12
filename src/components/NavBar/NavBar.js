@@ -1,7 +1,12 @@
 import React from 'react';
+import './NavBar.css';
 
-function Name() {
-  return <div></div>;
+function NavBar() {
+  return (
+    <div className="navbar">
+      <div className="logo"></div>
+    </div>
+  );
 }
 
-export default Name;
+export default NavBar;
