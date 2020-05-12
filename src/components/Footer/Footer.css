@@ -1,1 +1,8 @@
-css
+.footer {
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  background-color: antiquewhite;
+  position: flex;
+  flex-shrink: 0;
+}

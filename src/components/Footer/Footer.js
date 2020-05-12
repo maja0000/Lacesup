@@ -1,7 +1,12 @@
 import React from 'react';
+import './Footer.css';
 
-function Name() {
-  return <div></div>;
+function Footer() {
+  return (
+    <div className="footer">
+      <p>credits/legal/socials</p>
+    </div>
+  );
 }
 
-export default Name;
+export default Footer;
