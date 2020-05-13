@@ -29,28 +29,31 @@ export default function CollectionColors() {
   };
   return (
     <div>
-      <div className='card-container'>
+      <div className="card-container">
         <Card className={classes.root}>
-          <div className='rectangle' onClick={handleClickOpen}></div>
+          <div className="rectangle" onClick={handleClickOpen}></div>
         </Card>
-        <Card className={classes.root}>
-          <div className='card-buttons'>
-            <div className='pen'>
-              <CreateIcon />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Card className={classes.root}>
+            <div className="card-buttons">
+              <div className="pen">
+                <CreateIcon />
+              </div>
+              <div className="pen">
+                <GradeIcon />
+              </div>
             </div>
-            <div className='pen'>
-              <GradeIcon />
-            </div>
-          </div>
-        </Card>{' '}
-        <p
-          style={{
-            textAlign: 'center',
-            color: '#404041',
-            margin: '0 20px 0 20px',
-          }}>
-          Blue
-        </p>
+          </Card>{' '}
+          <p
+            style={{
+              textAlign: 'center',
+              color: '#404041',
+              margin: '0 20px 0 20px',
+            }}
+          >
+            Blue
+          </p>
+        </div>
       </div>
       <ColorModal handleClose={handleClose} open={open}></ColorModal>
     </div>
