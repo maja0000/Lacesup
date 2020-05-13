@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
+    minWidth: 350,
   },
   media: {
     minHeight: '350px',
