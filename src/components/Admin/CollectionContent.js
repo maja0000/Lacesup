@@ -7,18 +7,18 @@ import CollectionColors from './Collections/CollectionColors.js';
 function Collection() {
   return (
     <div>
-      <div className="add-new-container">
-        <div className="list-container">
-          <ul className="list">
+      <div className='add-new-container'>
+        <div className='list-container'>
+          <ul className='list'>
             <li>Laces</li>
             <li>Shoes</li>
             <li>Colors</li>
           </ul>
         </div>
-        <div className="collection-container">
-          <CollectionLaces />
-          {/* <CollectionShoes />
-          <CollectionColors /> */}
+        <div className='collection-container'>
+          {/* <CollectionLaces /> */}
+          {/* <CollectionShoes />*/}
+          <CollectionColors />
         </div>
 
         {/* <div className="test1">
