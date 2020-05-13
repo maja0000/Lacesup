@@ -11,16 +11,16 @@ function Collection({ data }) {
   // console.log("content",data)
   return (
     <div>
-      <div className="add-new-container">
-        <div className="list-container">
+      <div className='add-new-container'>
+        <div className='list-container'>
           <Router>
-            <Link className="list-item" to="/admin/add-laces">
+            <Link className='list-item' to='/admin/add-laces'>
               LACES
             </Link>
-            <Link className="list-item" to="/admin/add-colors">
+            <Link className='list-item' to='/admin/add-colors'>
               COLORS
             </Link>
-            <Link className="list-item" to="/admin/add-shoes">
+            <Link className='list-item' to='/admin/add-shoes'>
               SHOES
             </Link>
 
@@ -28,22 +28,22 @@ function Collection({ data }) {
               {/* <Route exact path="/admin/" component={CollectionLaces} /> */}
               <Route
                 exact
-                path="/admin/"
+                path='/admin/'
                 component={() => <CollectionLaces props={data} />}
               />
               <Route
                 exact
-                path="/admin/add-laces"
+                path='/admin/add-laces'
                 component={CollectionLaces}
               />
               <Route
                 exact
-                path="/admin/add-colors"
+                path='/admin/add-colors'
                 component={CollectionColors}
               />
               <Route
                 exact
-                path="/admin/add-shoes"
+                path='/admin/add-shoes'
                 component={CollectionShoes}
               />
             </Switch>

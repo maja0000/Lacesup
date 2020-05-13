@@ -12,13 +12,13 @@ import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <div className="content">
+    <div className='App'>
+      <div className='content'>
         <NavBar />
         <Router>
           <Switch>
-            <Route exact path="/admin" component={AddItems}></Route>
-            <Route exact path="/" component={DisplayCustomShoes}></Route>
+            <Route exact path='/admin' component={AddItems}></Route>
+            <Route exact path='/' component={DisplayCustomShoes}></Route>
             {/* <Route path="*" component={NotFound} /> */}
           </Switch>
         </Router>
