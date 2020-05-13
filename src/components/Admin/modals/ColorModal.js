@@ -38,28 +38,57 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     padding: '5px',
   },
+  upload: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    width: '712.42px',
+    justifyContent: 'space-between',
+  },
+  uploadButtons: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    marginRight: '-30px',
+  },
 }));
 
 export default function ColorModal({ handleClose, open }) {
-  const [imageUploaded, setImageUploaded] = React.useState(0);
-  const [selectedFile, setSelectedFile] = React.useState(null);
-  const [uploaded, setUpLoaded] = React.useState('initial');
+  const [selectedFile, setSelectedFile] = React.useState('');
+  const [fileName, setFileName] = React.useState(
+    'Select the image of the Color'
+  );
+  const [name, setName] = React.useState('Enter a name for the color');
+  const [url, setUrl] = React.useState(
+    'Enter the url of the product in the shop'
+  );
+  const [favorite, setFavorite] = React.useState(false);
+
   const classes = useStyles();
-
-  const handleUploadClick = (event) => {
-    let file = event.target.files[0];
-    const reader = new FileReader();
-    let url = reader.readAsDataURL(file);
-
-    reader.onloadend = function (e) {
-      setSelectedFile([reader.result]);
-      console.log(url); // Would see a path?
-
-      setUpLoaded('uploaded');
-      setSelectedFile(event.target.files[0]);
-      setImageUploaded(1);
-    };
+  const submitForm = () => {
+    fetch('https://laceup-backend.herokuapp.com/colors/', {
+      method: 'post',
+      body: JSON.stringify({
+        name: name,
+        file: selectedFile,
+        favorite: favorite,
+      }),
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+      });
   };
+
+  const handleUpload = (event) => {
+    const reader = new FileReader();
+    reader.onloadend = function (event) {
+      setSelectedFile(reader.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+
   return (
     <div>
       <Dialog
@@ -83,41 +112,43 @@ export default function ColorModal({ handleClose, open }) {
             margin="dense"
             id="name"
             type="name"
-            defaultValue="Enter a name for the color"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             fullWidth
             className={classes.formField}
           />
-          <div>
+          <div className={classes.upload}>
+            <label
+              htmlFor="icon-button-file"
+              style={{
+                width: '100%',
+                height: '40px',
+                marginLeft: '31px',
+                marginBottom: '-12px',
+              }}
+            >
+              {fileName}
+            </label>
             <input
               accept="image/*"
               className="fileUpload"
-              multiple
               type="file"
-              onClick={handleUploadClick}
-              // style={{ display: 'none' }}
+              id="icon-button-file"
+              onChange={handleUpload}
+              style={{ width: '100%', visibility: 'hidden' }}
             />
-            <label htmlFor="icon-button-file">
-              <Button
-                component="span"
-                size="large"
-                style={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  marginRight: '40px',
-                }}
-              >
-                <DeleteForeverOutlinedIcon
-                  color="disabled"
-                  fontSize="large"
-                  style={{ padding: '5px' }}
-                />
-                <AttachFileOutlinedIcon
-                  color="disabled"
-                  fontSize="large"
-                  style={{ padding: '5px' }}
-                />
-              </Button>
-            </label>
+            <div className={classes.uploadButtons}>
+              <DeleteForeverOutlinedIcon
+                color="disabled"
+                fontSize="large"
+                style={{ padding: '5px' }}
+              />
+              <AttachFileOutlinedIcon
+                color="disabled"
+                fontSize="large"
+                style={{ padding: '5px' }}
+              ></AttachFileOutlinedIcon>
+            </div>
           </div>
           <Divider style={{ marginLeft: '25px', width: '90%' }} />
           <TextField
@@ -125,7 +156,8 @@ export default function ColorModal({ handleClose, open }) {
             margin="dense"
             id="url"
             type="url"
-            defaultValue="Enter the url of the product in the shop"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
             fullWidth
             className={classes.formField}
           />
@@ -134,6 +166,8 @@ export default function ColorModal({ handleClose, open }) {
           <FormControlLabel
             control={<Checkbox name="checkedC" />}
             label="Mark as favourite"
+            value={true}
+            onChange={(e) => setFavorite(e.target.value)}
           />
           <FormHelperText style={{ marginLeft: '30px', marginTop: '-13px' }}>
             This will unmark previous favorite laces
@@ -146,7 +180,7 @@ export default function ColorModal({ handleClose, open }) {
               size="large"
               variant="text"
               fullWidth
-              onClick={handleClose}
+              onClick={submitForm}
               style={{ paddingTop: '15px', fontWeight: 'bold' }}
             >
               Save color

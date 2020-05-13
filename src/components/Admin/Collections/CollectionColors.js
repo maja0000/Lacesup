@@ -30,8 +30,8 @@ export default function CollectionColors() {
   return (
     <div>
       <div className="card-container">
-        <Card className={classes.root}>
-          <div className="rectangle" onClick={handleClickOpen}></div>
+        <Card className={classes.root} onClick={handleClickOpen}>
+          <div className="rectangle"></div>
         </Card>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Card className={classes.root}>
