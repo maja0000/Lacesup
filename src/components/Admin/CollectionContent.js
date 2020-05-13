@@ -7,7 +7,8 @@ import CollectionLaces from './Collections/CollectionLaces.js';
 import CollectionShoes from './Collections/CollectionShoes.js';
 import CollectionColors from './Collections/CollectionColors.js';
 
-function Collection() {
+function Collection({ data }) {
+  // console.log("content",data)
   return (
     <div>
       <div className="add-new-container">
@@ -24,7 +25,12 @@ function Collection() {
             </Link>
 
             <Switch>
-              <Route exact path="/admin/" component={CollectionLaces} />
+              {/* <Route exact path="/admin/" component={CollectionLaces} /> */}
+              <Route
+                exact
+                path="/admin/"
+                component={() => <CollectionLaces props={data} />}
+              />
               <Route
                 exact
                 path="/admin/add-laces"

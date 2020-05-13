@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import './eachCollection.css';
+import CreateIcon from '@material-ui/icons/Create';
+import GradeIcon from '@material-ui/icons/Grade';
 const useStyles = makeStyles({
   root: {
     width: '150px',
@@ -20,8 +22,12 @@ export default function CollectionColors() {
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Card className={classes.root}>
           <div className="card-buttons">
-            <div className="pen">pensil</div>
-            <div className="pen">star</div>
+            <div className="pen">
+              <CreateIcon />
+            </div>
+            <div className="pen">
+              <GradeIcon />
+            </div>
           </div>
         </Card>{' '}
         <p
