@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import './eachCollection.css';
+import CreateIcon from '@material-ui/icons/Create';
+import GradeIcon from '@material-ui/icons/Grade';
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +21,16 @@ export default function CollectionShoes() {
   return (
     <div className="card-container">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Card className={classes.root}>shoes</Card>{' '}
+        <Card className={classes.root}>
+          <div className="card-buttons">
+            <div className="pen">
+              <CreateIcon />
+            </div>
+            <div className="pen">
+              <GradeIcon />
+            </div>
+          </div>
+        </Card>
         <p
           style={{
             textAlign: 'center',
