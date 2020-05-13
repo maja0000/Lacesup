@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import ShoeCard from './ShoeCard';
 import Button from './Button/ButtonBuy';
 import Slider from './Slider/Slider';
 import SliderColors from './Slider/SliderColors';
@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     // height: '300px',
     color: theme.palette.text.secondary,
   },
+  color: {
+    color: 'grey',
+  },
 }));
 
 function ChangeLaces({ shoes }) {
@@ -26,19 +29,25 @@ function ChangeLaces({ shoes }) {
 
   return (
     <div className={classes.root}>
-      <Grid container justify="center" alignItems="stretch" spacing={3}>
-        <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Paper className={classes.paper}>Big shoe card</Paper>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
+        <Grid item xs={12} sm={6} md={6} lg={3}>
+          <ShoeCard />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <span>CHOOSE A COLOR FOR THE SNEAKERS</span>
-          <SliderColors />{' '}
+          <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
+          <SliderColors />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <span>CHOOSE YOUR LACES</span>
+          <span className={classes.color}>CHOOSE YOUR LACES</span>
           <Slider />
         </Grid>
         <Grid
