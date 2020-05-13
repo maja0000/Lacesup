@@ -2,11 +2,15 @@
   background-color: #ffffff;
   border-radius: 100%;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  width: 41px;
-  height: 41px;
+  width: 35px;
+  height: 35px;
+  margin: 5px;
+  text-align: center;
+  align-self: flex-end;
 }
 .card-buttons {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  padding: 5px;
 }
