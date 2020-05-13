@@ -53,23 +53,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ShoeModal({ handleClose, open }) {
-  const [selectedFile, setSelectedFile] = React.useState('');
-  const [fileName, setFileName] = React.useState(
-    'Select the image of the Shoe'
-  );
-  const [name, setName] = React.useState('Enter a brand for the shoe');
-  const [url, setUrl] = React.useState(
-    'Enter the url of the product in the shop'
-  );
+  const [fileNames, setFileNames] = React.useState([]);
+  const [name, setName] = React.useState('');
+  const [colorVariants, setColorVariants] = React.useState([]);
+  const [url, setUrl] = React.useState('');
+
+  const [laceImg, setLaceImg] = React.useState('');
   const [favorite, setFavorite] = React.useState(false);
 
   const classes = useStyles();
   const submitForm = () => {
-    fetch('https://laceup-backend.herokuapp.com/colors/', {
+    fetch('https://laceup-backend.herokuapp.com/', {
       method: 'post',
       body: JSON.stringify({
-        name: name,
-        file: selectedFile,
+        brand: name,
+        colorVariants: colorVariants,
+        laceImg: laceImg,
         favorite: favorite,
       }),
     })
@@ -82,9 +81,26 @@ export default function ShoeModal({ handleClose, open }) {
   };
 
   const handleUpload = (event) => {
+    const files = [...event.target.files];
+    const variants = [];
+    const filenames = [];
+    files.forEach((file) => {
+      setFileNames([...fileNames, file.name]);
+      const reader = new FileReader();
+      reader.onloadend = function (event) {
+        variants.push({ image: reader.result });
+        filenames.push(file.name);
+      };
+      reader.readAsDataURL(file);
+    });
+    setColorVariants(variants);
+    setFileNames(filenames);
+  };
+
+  const handleLaceImgUpload = (event) => {
     const reader = new FileReader();
     reader.onloadend = function (event) {
-      setSelectedFile(reader.result);
+      setLaceImg(reader.result);
     };
     reader.readAsDataURL(event.target.files[0]);
   };
@@ -112,10 +128,12 @@ export default function ShoeModal({ handleClose, open }) {
             id='name'
             type='name'
             value={name}
+            placeholder='Enter a brand name for the shoe'
             onChange={(e) => setName(e.target.value)}
             fullWidth
             className={classes.formField}
           />
+
           <div className={classes.upload}>
             <label
               htmlFor='icon-button-file'
@@ -125,7 +143,7 @@ export default function ShoeModal({ handleClose, open }) {
                 marginLeft: '31px',
                 marginBottom: '-12px',
               }}>
-              {fileName}
+              {fileNames.map((file) => file)}
             </label>
             <input
               accept='image/*'
@@ -133,6 +151,7 @@ export default function ShoeModal({ handleClose, open }) {
               type='file'
               id='icon-button-file'
               onChange={handleUpload}
+              multiple='multiple'
               style={{ width: '100%', visibility: 'hidden' }}
             />
             <div className={classes.uploadButtons}>
@@ -148,6 +167,7 @@ export default function ShoeModal({ handleClose, open }) {
             </div>
           </div>
           <Divider style={{ marginLeft: '25px', width: '90%' }} />
+
           <div className={classes.upload}>
             <label
               htmlFor='icon-button-file'
@@ -157,47 +177,16 @@ export default function ShoeModal({ handleClose, open }) {
                 marginLeft: '31px',
                 marginBottom: '-12px',
               }}>
-              {fileName}
+              {laceImg}
             </label>
             <input
               accept='image/*'
               className='fileUpload'
               type='file'
               id='icon-button-file'
-              onChange={handleUpload}
+              onChange={handleLaceImgUpload}
               style={{ width: '100%', visibility: 'hidden' }}
-            />
-            <div className={classes.uploadButtons}>
-              <DeleteForeverOutlinedIcon
-                color='disabled'
-                fontSize='large'
-                style={{ padding: '5px' }}
-              />
-              <AttachFileOutlinedIcon
-                color='disabled'
-                fontSize='large'
-                style={{ padding: '5px' }}></AttachFileOutlinedIcon>
-            </div>
-          </div>
-          <Divider style={{ marginLeft: '25px', width: '90%' }} />
-          <div className={classes.upload}>
-            <label
-              htmlFor='icon-button-file'
-              style={{
-                width: '100%',
-                height: '40px',
-                marginLeft: '31px',
-                marginBottom: '-12px',
-              }}>
-              {fileName}
-            </label>
-            <input
-              accept='image/*'
-              className='fileUpload'
-              type='file'
-              id='icon-button-file'
-              onChange={handleUpload}
-              style={{ width: '100%', visibility: 'hidden' }}
+              placeholder=''
             />
             <div className={classes.uploadButtons}>
               <DeleteForeverOutlinedIcon
@@ -218,6 +207,7 @@ export default function ShoeModal({ handleClose, open }) {
             id='url'
             type='url'
             value={url}
+            placeholder='Enter the url of the product in the shop'
             onChange={(e) => setUrl(e.target.value)}
             fullWidth
             className={classes.formField}
