@@ -11,13 +11,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     margin: '0 20px 0 20px',
   },
-
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    // height: '300px',
-    color: theme.palette.text.secondary,
-  },
   color: {
     color: 'grey',
   },
@@ -42,11 +35,11 @@ function ChangeLaces({ shoes }) {
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <Slider />
         </Grid>
-        <Grid item xs={12} sm={3} md={6} lg={6}>
+        <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
           <SliderColors />
         </Grid>
-        <Grid item xs={12} sm={3} md={6} lg={6}>
+        <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
           <Slider />
         </Grid>
