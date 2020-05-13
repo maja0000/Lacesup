@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 3,
       border: 0,
       color: 'black',
+      height: '50px',
+      width: '200px',
     },
   },
 }));
