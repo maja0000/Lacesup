@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 // router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 // components
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
@@ -18,7 +19,7 @@ function App() {
           <Switch>
             <Route exact path='/admin' component={AddItems}></Route>
             <Route exact path='/' component={DisplayCustomShoes}></Route>
-            <Route path='*' component={NotFound} />
+            {/* <Route path="*" component={NotFound} /> */}
           </Switch>
         </Router>
       </div>
