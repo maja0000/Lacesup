@@ -1,0 +1,43 @@
+.add-new-container {
+  /* display: flex; */
+  margin: 5%;
+  width: 90%;
+  height: 400px;
+  background-color: antiquewhite;
+}
+.list-container {
+  background-color: pink;
+  height: 15%;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  list-style-type: none;
+}
+li {
+  margin-right: 5%;
+}
+.collection-container {
+  height: 100%;
+  width: 100%;
+  background-color: green;
+}
+/* .test1 {
+  background-image: url('../../pictures/00_Mock_converse_altas-zapas.jpg');
+
+  height: 200px;
+  width: 200px;
+  background-position: center;
+  background-size: 200px;
+  background-repeat: no-repeat;
+}
+.test2 {
+  background-image: url('../../pictures/svgshoe.svg');
+  height: 100%;
+  width: 100%;
+} */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
