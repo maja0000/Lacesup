@@ -13,8 +13,9 @@ const colors = [
 function SliderColors() {
   return (
     <div className="colors-container">
-      {colors.map((color) => (
+      {colors.map((color, key) => (
         <div
+          key={key}
           className="color"
           style={{
             cursor: ' pointer',
