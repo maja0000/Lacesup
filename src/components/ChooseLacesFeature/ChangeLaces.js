@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
   },
   color: {
     color: 'grey',
-    height: '300px',
   },
 }));
 
