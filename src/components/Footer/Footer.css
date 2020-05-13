@@ -1,7 +1,7 @@
 .footer {
-  height: 50px;
+  height: 30px;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   background-color: #343333;
   color: #fcb536;
   flex-shrink: 0;

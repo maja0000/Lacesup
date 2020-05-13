@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import '../Collection.css';
 import ColorModal from '../modals/ColorModal';
-import '../Collection.css';
+import './eachCollection.css';
+import CreateIcon from '@material-ui/icons/Create';
+import GradeIcon from '@material-ui/icons/Grade';
 
 const useStyles = makeStyles({
   root: {
@@ -30,14 +31,26 @@ export default function CollectionColors() {
     <div>
       <div className='card-container'>
         <Card className={classes.root}>
-          <CardContent>
-            <div className='rectangle' onClick={handleClickOpen}></div>
-          </CardContent>
+          <div className='rectangle' onClick={handleClickOpen}></div>
         </Card>
-        <Card className={classes.root}></Card>
-        <Card className={classes.root}></Card>
-        <Card className={classes.root}></Card>
-        <Card className={classes.root}></Card>
+        <Card className={classes.root}>
+          <div className='card-buttons'>
+            <div className='pen'>
+              <CreateIcon />
+            </div>
+            <div className='pen'>
+              <GradeIcon />
+            </div>
+          </div>
+        </Card>{' '}
+        <p
+          style={{
+            textAlign: 'center',
+            color: '#404041',
+            margin: '0 20px 0 20px',
+          }}>
+          Blue
+        </p>
       </div>
       <ColorModal handleClose={handleClose} open={open}></ColorModal>
     </div>

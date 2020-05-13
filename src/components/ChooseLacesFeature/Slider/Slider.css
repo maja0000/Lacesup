@@ -22,13 +22,12 @@
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  overflow-x: auto;
   padding: 0 5px 0 5px;
 }
 
 .color {
   height: 70%;
-  width: 12%;
+  width: 17%;
   flex: 0 0 auto;
   margin-right: 8px;
   border-radius: 6px;
