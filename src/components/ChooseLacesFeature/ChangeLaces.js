@@ -9,17 +9,21 @@ import SliderColors from './Slider/SliderColors';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    margin: '0 20px 0 20px',
   },
+
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
   },
   color: {
     color: 'grey',
+    height: '300px',
   },
 }));
 
-function ChangeLaces() {
+function ChangeLaces({ shoes }) {
+  // console.log(shoes)
   const classes = useStyles();
 
   return (
@@ -29,19 +33,23 @@ function ChangeLaces() {
           <ShoeCard />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
-          {/* <Paper className={classes.paper}>Shoe slider</Paper> */}
           <Slider />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <h3 className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</h3>
+          <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
           <SliderColors />
         </Grid>
         <Grid item xs={12} sm={3} md={6} lg={6}>
-          <h3 className={classes.color}>CHOOSE YOUR LACES</h3>
+          <span className={classes.color}>CHOOSE YOUR LACES</span>
           <Slider />
-          {/* <Paper className={classes.paper}>xs=12</Paper> */}
         </Grid>
-        <Grid item xs={12} sm={3} md={6} lg={6}>
+        <Grid
+          item
+          xs={12}
+          sm={3}
+          md={6}
+          lg={6}
+          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}>
           <Button />
         </Grid>
       </Grid>
