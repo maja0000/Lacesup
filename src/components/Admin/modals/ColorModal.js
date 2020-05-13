@@ -94,7 +94,7 @@ export default function ColorModal({ handleClose, open }) {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby='form-dialog-title'
+        aria-labelledby="form-dialog-title"
         PaperProps={{
           style: {
             backgroundColor: '#FFFFFF',
@@ -102,15 +102,16 @@ export default function ColorModal({ handleClose, open }) {
             minWidth: '833px',
             height: '468px',
           },
-        }}>
-        <DialogTitle id='form-dialog-title'>New / Edit Color</DialogTitle>
+        }}
+      >
+        <DialogTitle id="form-dialog-title">New / Edit Color</DialogTitle>
         <Divider />
         <DialogContent>
           <TextField
             autoFocus
-            margin='dense'
-            id='name'
-            type='name'
+            margin="dense"
+            id="name"
+            type="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             fullWidth
@@ -118,41 +119,43 @@ export default function ColorModal({ handleClose, open }) {
           />
           <div className={classes.upload}>
             <label
-              htmlFor='icon-button-file'
+              htmlFor="icon-button-file"
               style={{
                 width: '100%',
                 height: '40px',
                 marginLeft: '31px',
                 marginBottom: '-12px',
-              }}>
+              }}
+            >
               {fileName}
             </label>
             <input
-              accept='image/*'
-              className='fileUpload'
-              type='file'
-              id='icon-button-file'
+              accept="image/*"
+              className="fileUpload"
+              type="file"
+              id="icon-button-file"
               onChange={handleUpload}
               style={{ width: '100%', visibility: 'hidden' }}
             />
             <div className={classes.uploadButtons}>
               <DeleteForeverOutlinedIcon
-                color='disabled'
-                fontSize='large'
+                color="disabled"
+                fontSize="large"
                 style={{ padding: '5px' }}
               />
               <AttachFileOutlinedIcon
-                color='disabled'
-                fontSize='large'
-                style={{ padding: '5px' }}></AttachFileOutlinedIcon>
+                color="disabled"
+                fontSize="large"
+                style={{ padding: '5px' }}
+              ></AttachFileOutlinedIcon>
             </div>
           </div>
           <Divider style={{ marginLeft: '25px', width: '90%' }} />
           <TextField
             autoFocus
-            margin='dense'
-            id='url'
-            type='url'
+            margin="dense"
+            id="url"
+            type="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             fullWidth
@@ -161,8 +164,8 @@ export default function ColorModal({ handleClose, open }) {
         </DialogContent>
         <FormGroup style={{ marginLeft: '40px', width: '90%' }}>
           <FormControlLabel
-            control={<Checkbox name='checkedC' />}
-            label='Mark as favourite'
+            control={<Checkbox name="checkedC" />}
+            label="Mark as favourite"
             value={true}
             onChange={(e) => setFavorite(e.target.value)}
           />
@@ -174,11 +177,12 @@ export default function ColorModal({ handleClose, open }) {
           <Button onClick={handleClose}>Cancel</Button>
           <div className={classes.button}>
             <Button
-              size='large'
-              variant='text'
+              size="large"
+              variant="text"
               fullWidth
               onClick={submitForm}
-              style={{ paddingTop: '15px', fontWeight: 'bold' }}>
+              style={{ paddingTop: '15px', fontWeight: 'bold' }}
+            >
               Save color
             </Button>
           </div>

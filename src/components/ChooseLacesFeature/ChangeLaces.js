@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ChangeLaces({ shoes }) {
-  // console.log(shoes)
+  // console.log('here', shoes);
+
   const classes = useStyles();
 
   return (
@@ -33,7 +34,7 @@ function ChangeLaces({ shoes }) {
           <ShoeCard />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Slider />
+          <Slider shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
