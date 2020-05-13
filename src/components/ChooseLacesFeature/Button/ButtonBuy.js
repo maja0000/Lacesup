@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 3,
       border: 0,
       color: 'black',
+      fontWeight: 'bold',
       height: '50px',
       width: '200px',
     },
@@ -21,7 +22,7 @@ function ButtonBuy() {
 
   return (
     <div className={classes.root}>
-      <Button variant="contained">BUY THESE LACES</Button>
+      <Button variant='contained'>BUY THESE LACES</Button>
     </div>
   );
 }
