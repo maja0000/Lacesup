@@ -15,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
+    // height: '300px',
+    color: theme.palette.text.secondary,
   },
   color: {
     color: 'grey',
@@ -29,10 +31,11 @@ function ChangeLaces({ shoes }) {
     <div className={classes.root}>
       <Grid
         container
-        direction='column'
-        justify='center'
-        alignItems='center'
-        spacing={3}>
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
         <Grid item xs={12} sm={6} md={6} lg={3}>
           <ShoeCard />
         </Grid>
@@ -53,7 +56,8 @@ function ChangeLaces({ shoes }) {
           sm={3}
           md={6}
           lg={6}
-          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}>
+          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}
+        >
           <Button />
         </Grid>
       </Grid>
