@@ -15,7 +15,7 @@ function App() {
 
         <DisplayCustomShoes />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
