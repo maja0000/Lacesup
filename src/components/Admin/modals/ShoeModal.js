@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
 export default function ShoeModal({ handleClose, open }) {
   const [fileNames, setFileNames] = React.useState([]);
   const [name, setName] = React.useState('');
+  const [laceName, setLaceName] = React.useState(
+    'Select an svg image of the lace'
+  );
   const [colorVariants, setColorVariants] = React.useState([]);
   const [url, setUrl] = React.useState('');
 
@@ -65,6 +68,9 @@ export default function ShoeModal({ handleClose, open }) {
   const submitForm = () => {
     fetch('https://laceup-backend.herokuapp.com/', {
       method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         brand: name,
         colorVariants: colorVariants,
@@ -99,6 +105,7 @@ export default function ShoeModal({ handleClose, open }) {
 
   const handleLaceImgUpload = (event) => {
     const reader = new FileReader();
+    setLaceName(event.target.files[0].name);
     reader.onloadend = function (event) {
       setLaceImg(reader.result);
     };
@@ -137,9 +144,10 @@ export default function ShoeModal({ handleClose, open }) {
           <div className={classes.upload}>
             <label
               htmlFor='icon-button-file'
+              placeholder='Select the images of the shoes'
               style={{
                 width: '100%',
-                height: '40px',
+                minHeight: '40px',
                 marginLeft: '31px',
                 marginBottom: '-12px',
               }}>
@@ -170,23 +178,22 @@ export default function ShoeModal({ handleClose, open }) {
 
           <div className={classes.upload}>
             <label
-              htmlFor='icon-button-file'
+              htmlFor='svg'
               style={{
                 width: '100%',
                 height: '40px',
                 marginLeft: '31px',
                 marginBottom: '-12px',
               }}>
-              {laceImg}
+              {laceName}
             </label>
             <input
               accept='image/*'
               className='fileUpload'
               type='file'
-              id='icon-button-file'
+              id='svg'
               onChange={handleLaceImgUpload}
               style={{ width: '100%', visibility: 'hidden' }}
-              placeholder=''
             />
             <div className={classes.uploadButtons}>
               <DeleteForeverOutlinedIcon

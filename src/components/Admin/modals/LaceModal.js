@@ -54,7 +54,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LaceModal({ handleClose, open }) {
   const [selectedFile, setSelectedFile] = React.useState('');
-  const [fileName, setFileName] = React.useState();
+  const [fileName, setFileName] = React.useState(
+    'Select the image of the lace'
+  );
+  const [pattern, setPattern] = React.useState('');
+  const [patternName, setPatternName] = React.useState(
+    'Select the image of the pattern'
+  );
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
   const [favorite, setFavorite] = React.useState(false);
@@ -63,10 +69,14 @@ export default function LaceModal({ handleClose, open }) {
   const submitForm = () => {
     fetch('https://laceup-backend.herokuapp.com/laces', {
       method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: name,
         laceImg: selectedFile,
         favorite: favorite,
+        pattern: pattern,
       }),
     })
       .then(function (response) {
@@ -79,8 +89,17 @@ export default function LaceModal({ handleClose, open }) {
 
   const handleUpload = (event) => {
     const reader = new FileReader();
+    setFileName(event.target.files[0].name);
     reader.onloadend = function (event) {
       setSelectedFile(reader.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+  const handlePatternUpload = (event) => {
+    const reader = new FileReader();
+    setPatternName(event.target.files[0].name);
+    reader.onloadend = function (event) {
+      setPattern(reader.result);
     };
     reader.readAsDataURL(event.target.files[0]);
   };
@@ -130,6 +149,38 @@ export default function LaceModal({ handleClose, open }) {
               type='file'
               id='icon-button-file'
               onChange={handleUpload}
+              style={{ width: '100%', visibility: 'hidden' }}
+            />
+            <div className={classes.uploadButtons}>
+              <DeleteForeverOutlinedIcon
+                color='disabled'
+                fontSize='large'
+                style={{ padding: '5px' }}
+              />
+              <AttachFileOutlinedIcon
+                color='disabled'
+                fontSize='large'
+                style={{ padding: '5px' }}></AttachFileOutlinedIcon>
+            </div>
+          </div>
+          <Divider style={{ marginLeft: '25px', width: '90%' }} />
+          <div className={classes.upload}>
+            <label
+              htmlFor='pattern'
+              style={{
+                width: '100%',
+                height: '40px',
+                marginLeft: '31px',
+                marginBottom: '-12px',
+              }}>
+              {patternName}
+            </label>
+            <input
+              accept='image/*'
+              className='fileUpload'
+              type='file'
+              id='pattern'
+              onChange={handlePatternUpload}
               style={{ width: '100%', visibility: 'hidden' }}
             />
             <div className={classes.uploadButtons}>
