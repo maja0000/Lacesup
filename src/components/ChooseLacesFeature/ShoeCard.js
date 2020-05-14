@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ShoeCard({ shoes, mainpic }) {
+  const [defautpic, setDefautpic] = useState(
+    "url('../../pictures/00_Mock_converse_altas-zapas.jpg')"
+  );
+
   return (
     <>
       <div
         style={{
-          backgroundImage: require('../../pictures/00_Mock_converse_altas-zapas.jpg'),
-          backgroundImage: mainpic,
+          backgroundImage: mainpic ? mainpic : defautpic,
           height: '350px',
           width: '350px',
           backgroundPosition: 'center',

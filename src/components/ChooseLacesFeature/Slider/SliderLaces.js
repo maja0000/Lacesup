@@ -2,8 +2,6 @@ import React from 'react';
 import './Slider.css';
 
 function SliderLaces({ laces }) {
-  console.log('=>>??>', laces);
-  // console.log(pictures);
   const patterns = laces.map((one) => one.laceImg);
 
   return (
