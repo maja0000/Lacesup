@@ -1,42 +1,55 @@
-import React, { useState } from 'react';
+import React from "react";
 
-export default function ShoeCard({ color, shoes, mainpic }) {
-  const [defaultpic, setDefautpic] = useState(
-    "url('../../pictures/00_Mock_converse_altas-zapas.jpg')"
-  );
-  // console.log('shoes', shoes);
-  // console.log('colors', color);
-  let chosenColor = shoes.map((each) => each.colorVariants);
-  // console.log('all shoes all colors', chosenColor);
+export default function ShoeCard({ color, shoe, lace }) {
   return (
     <>
       <div
         style={{
-          backgroundImage: mainpic ? mainpic : defaultpic,
-          height: '350px',
-          width: '350px',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
+          backgroundImage: `url(${
+            (
+              shoe.colorVariants.find((variant) => variant.color === color) ||
+              shoe.colorVariants[0]
+            ).image
+          })`,
+          height: "350px",
+          width: "350px",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          position: "relative",
         }}
-      ></div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      >
+        <div
+          style={{
+            backgroundImage: `url(${lace.pattern})`,
+            height: "350px",
+            width: "350px",
+            backgroundRepeat: "repeat",
+            position: "absolute",
+            left: "0",
+            top: "0",
+            "-webkit-mask": `url(${shoe.laceImg}) 350px 350px`,
+            // backgroundSize: "cover",
+          }}
+        ></div>
+      </div>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <img
           alt="cross laces"
-          src={require('../../pictures/ex.svg')}
+          src={require("../../pictures/ex.svg")}
           height="30"
           width="30"
           style={{
-            border: '1px solid grey',
-            borderRadius: '5px',
-            marginRight: '5px',
+            border: "1px solid grey",
+            borderRadius: "5px",
+            marginRight: "5px",
           }}
         />
         <img
           alt="straight laces"
-          src={require('../../pictures/straight.svg')}
+          src={require("../../pictures/straight.svg")}
           height="30"
           width="30"
-          style={{ border: '1px solid grey', borderRadius: '5px' }}
+          style={{ border: "1px solid grey", borderRadius: "5px" }}
         />
       </div>
     </>

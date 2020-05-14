@@ -1,22 +1,20 @@
-import React from 'react';
-import './Slider.css';
+import React from "react";
+import "./Slider.css";
 
-function SliderLaces({ laces }) {
-  const patterns = laces.map((one) => one.laceImg);
-
+function SliderLaces({ laces, onSelect }) {
   return (
     <div className="slider-container">
-      {patterns.map((pic, key) => (
+      {laces.map((lace) => (
         <div
-          key={key}
+          key={lace._id}
           className="slider-element"
           style={{
-            cursor: ' pointer',
-            backgroundImage: `url(${pic})`,
-            backgroundPosition: 'center',
-            backgroundSize: '100%',
+            cursor: " pointer",
+            backgroundImage: `url(${lace.laceImg})`,
+            backgroundPosition: "center",
+            backgroundSize: "100%",
           }}
-          // onClick={(event) => handleClick(event)}
+          onClick={() => onSelect(lace)}
           //   onClick={(event) => changeMainPic(event.target)}
         />
       ))}
