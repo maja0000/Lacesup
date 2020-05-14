@@ -85,6 +85,7 @@ export default function LaceModal({ handleClose, open }) {
       .then(function (data) {
         console.log(data);
       });
+    handleClose();
   };
 
   const handleUpload = (event) => {
