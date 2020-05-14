@@ -57,15 +57,13 @@ export default function LaceModal({ handleClose, open }) {
   const [fileName, setFileName] = React.useState(
     'Select the image of the Lace'
   );
-  const [name, setName] = React.useState('Enter a name for the lace');
-  const [url, setUrl] = React.useState(
-    'Enter the url of the product in the shop'
-  );
+  const [name, setName] = React.useState('');
+  const [url, setUrl] = React.useState('');
   const [favorite, setFavorite] = React.useState(false);
 
   const classes = useStyles();
   const submitForm = () => {
-    fetch('https://laceup-backend.herokuapp.com/colors/', {
+    fetch('https://laceup-backend.herokuapp.com/laces', {
       method: 'post',
       body: JSON.stringify({
         name: name,
@@ -112,6 +110,7 @@ export default function LaceModal({ handleClose, open }) {
             id='name'
             type='name'
             value={name}
+            placeholder='Enter a name for the lace'
             onChange={(e) => setName(e.target.value)}
             fullWidth
             className={classes.formField}
@@ -154,6 +153,7 @@ export default function LaceModal({ handleClose, open }) {
             id='url'
             type='url'
             value={url}
+            placeholder='Enter the url of the product in the shop'
             onChange={(e) => setUrl(e.target.value)}
             fullWidth
             className={classes.formField}
