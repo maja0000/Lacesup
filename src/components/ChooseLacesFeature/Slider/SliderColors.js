@@ -3,10 +3,10 @@ import './Slider.css';
 
 const colors = [
   'white',
-  '#CE585A',
+  'red',
   '#59794A',
-  '#4B88BF',
-  '#F8C93C',
+  'blue',
+  'yellow',
   '#EE68C2',
   '#5D5D5D',
 ];
@@ -21,6 +21,7 @@ function SliderColors() {
             cursor: ' pointer',
             backgroundColor: `${color}`,
           }}
+          // onClick={{}}
         />
       ))}
     </div>
