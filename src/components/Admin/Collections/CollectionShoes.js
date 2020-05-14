@@ -20,6 +20,20 @@ const useStyles = makeStyles({
 export default function CollectionShoes() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [shoes, setShoes] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch('https://laceup-backend.herokuapp.com/')
+      .then((res) => res.json())
+      .then((res) => {
+        setShoes(res.result);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      });
+  }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,30 +48,41 @@ export default function CollectionShoes() {
       <Card className={classes.root} onClick={handleClickOpen}>
         <div className='rectangle'></div>
       </Card>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Card className={classes.root}>
-          <div className='card-buttons'>
-            <div className='pen'>
-              <CreateIcon />
-            </div>
-            <div className='pen'>
-              <GradeIcon />
+
+      {shoes.map((shoe, index) => (
+        <div
+          style={{ display: 'flex', flexDirection: 'column' }}
+          key={index}
+          onClick={handleClickOpen}>
+          <div
+            className={classes.root}
+            style={{
+              cursor: ' pointer',
+              backgroundImage: `url(${shoe.colorVariants[0].image})`,
+              backgroundPosition: 'center',
+              backgroundSize: '100%',
+            }}>
+            <div className='card-buttons'>
+              <div className='pen'>
+                <CreateIcon />
+              </div>
+              <div className='pen'>
+                <GradeIcon />
+              </div>
             </div>
           </div>
-        </Card>
-        <p
-          style={{
-            textAlign: 'center',
-            color: '#404041',
-            margin: '0 20px 0 20px',
-          }}>
-          Converse
-        </p>
-      </div>
-      <Card className={classes.root}></Card>
-      <Card className={classes.root}></Card>
-      <Card className={classes.root}></Card>
-      <Card className={classes.root}></Card>
+
+          <p
+            key={index}
+            style={{
+              textAlign: 'center',
+              color: '#404041',
+              margin: '0 20px 0 20px',
+            }}>
+            {shoe.brand}
+          </p>
+        </div>
+      ))}
       <ShoeModal handleClose={handleClose} open={open}></ShoeModal>
     </div>
   );
