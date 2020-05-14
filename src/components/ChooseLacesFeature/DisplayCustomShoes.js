@@ -9,8 +9,8 @@ function DisplayCustomShoes() {
     fetch('https://laceup-backend.herokuapp.com/')
       .then((res) => res.json())
       .then((res) => {
-        setShoes(res);
-        setLoading(true);
+        setShoes(res.result);
+        setLoading(false);
       })
       .catch((error) => {
         console.log('Error: ', error);
@@ -18,11 +18,7 @@ function DisplayCustomShoes() {
   }, []);
   // console.log('outside', shoes.result);
   // {
-  //   !loading &&
-  //     console.log(
-  //       'data ->',
-  //       shoes.result.map((e) => e.brand)
-  //     );
+  //   !loading && console.log('data ->', shoes);
   // }
 
   return <div>{loading ? 'Loading...' : <ChangeLaces shoes={shoes} />}</div>;

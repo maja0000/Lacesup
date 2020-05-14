@@ -54,9 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LaceModal({ handleClose, open }) {
   const [selectedFile, setSelectedFile] = React.useState('');
-  const [fileName, setFileName] = React.useState(
-    'Select the image of the Lace'
-  );
+  const [fileName, setFileName] = React.useState();
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
   const [favorite, setFavorite] = React.useState(false);

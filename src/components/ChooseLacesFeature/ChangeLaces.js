@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ShoeCard from './ShoeCard';
@@ -17,10 +17,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ChangeLaces({ shoes }) {
+  const { mainpic, setMainPic } = useState('');
   // console.log('here', shoes);
+  // console.log(shoes.map((e) => e.brand));
+  let pictures = shoes.map((e) => e.colorVariants[0].image);
 
   const classes = useStyles();
-
+  // const changeMainPic = () => {
+  //   setMainPic(event.target.style.background);
+  // };
   return (
     <div className={classes.root}>
       <Grid
@@ -30,10 +35,14 @@ function ChangeLaces({ shoes }) {
         alignItems='center'
         spacing={3}>
         <Grid item xs={12} sm={6} md={6} lg={3}>
-          <ShoeCard />
+          <ShoeCard mainpic={mainpic} shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Slider shoes={shoes} />
+          <Slider
+            // changeMainPic={changeMainPic}
+            pictures={pictures}
+            shoes={shoes}
+          />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
@@ -41,7 +50,7 @@ function ChangeLaces({ shoes }) {
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
-          <Slider />
+          <Slider pictures={pictures} shoes={shoes} />
         </Grid>
         <Grid
           item
