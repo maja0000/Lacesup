@@ -33,11 +33,10 @@ function ChangeLaces({ laces, shoes }) {
     <div className={classes.root}>
       <Grid
         container
-        direction="column"
-        justify="center"
-        alignItems="center"
-        spacing={3}
-      >
+        direction='column'
+        justify='center'
+        alignItems='center'
+        spacing={3}>
         <Grid item xs={12} sm={6} md={6} lg={3}>
           <ShoeCard mainpic={mainpic} shoes={shoes} />
         </Grid>
@@ -58,8 +57,7 @@ function ChangeLaces({ laces, shoes }) {
           sm={3}
           md={6}
           lg={6}
-          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}
-        >
+          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}>
           <Button />
         </Grid>
       </Grid>
