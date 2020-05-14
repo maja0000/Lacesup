@@ -44,15 +44,16 @@ export default function CollectionColors() {
   };
   return (
     <div>
-      <div className='card-container'>
+      <div className="card-container">
         <Card className={classes.root} onClick={handleClickOpen}>
-          <div className='rectangle'></div>
+          <div className="rectangle"></div>
         </Card>
         {colors.map((color, index) => (
           <div
             style={{ display: 'flex', flexDirection: 'column' }}
             key={index}
-            onClick={handleClickOpen}>
+            onClick={handleClickOpen}
+          >
             <div
               className={classes.root}
               style={{
@@ -60,14 +61,22 @@ export default function CollectionColors() {
                 backgroundImage: `url(${color.file})`,
                 backgroundPosition: 'center',
                 backgroundSize: '100%',
-              }}>
-              <div className='card-buttons'>
-                <div className='pen'>
+              }}
+            >
+              <div className="card-buttons">
+                <div className="pen">
                   <CreateIcon />
                 </div>
-                <div className='pen'>
+                {color.favorite ? (
+                  <div className="pen">
+                    <GradeIcon />
+                  </div>
+                ) : (
+                  ''
+                )}
+                {/* <div className='pen'>
                   <GradeIcon />
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -77,7 +86,8 @@ export default function CollectionColors() {
                 textAlign: 'center',
                 color: '#404041',
                 margin: '0 20px 0 20px',
-              }}>
+              }}
+            >
               {color.name}
             </p>
           </div>
