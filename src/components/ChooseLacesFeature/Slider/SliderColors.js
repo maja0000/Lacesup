@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Slider.css';
 
 const colors = [
@@ -10,7 +10,7 @@ const colors = [
   '#EE68C2',
   '#5D5D5D',
 ];
-function SliderColors() {
+function SliderColors({ displayDifferentColor }) {
   return (
     <div className="colors-container">
       {colors.map((color, key) => (
@@ -21,7 +21,7 @@ function SliderColors() {
             cursor: ' pointer',
             backgroundColor: `${color}`,
           }}
-          // onClick={{}}
+          onClick={() => displayDifferentColor(color)}
         />
       ))}
     </div>

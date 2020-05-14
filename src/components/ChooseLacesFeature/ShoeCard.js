@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 
-export default function ShoeCard({ shoes, mainpic }) {
+export default function ShoeCard({ color, shoes, mainpic }) {
   const [defautpic, setDefautpic] = useState(
     "url('../../pictures/00_Mock_converse_altas-zapas.jpg')"
   );
+  console.log('shoes', shoes);
+  console.log('colors', color);
+  let chosenColor = shoes.map((each) => each.colorVariants);
+  console.log('all shoes all colors', chosenColor);
   return (
     <>
       <div

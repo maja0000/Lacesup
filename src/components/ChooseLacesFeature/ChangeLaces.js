@@ -19,18 +19,22 @@ const useStyles = makeStyles((theme) => ({
 
 function ChangeLaces({ laces, shoes }) {
   const [mainpic, setMainPic] = useState('');
-  const [lacemask, setLacemask] = useState('');
+  const [color, setColor] = useState('');
+
   // console.log('here', shoes);
 
-  let pictures = shoes.map((e) => e.colorVariants[0].image);
+  let pictures = shoes.map((each) => each.colorVariants[0].image);
+  let allAvalibleColors = shoes.map((each) => each.colorVariants);
+  // console.log('all', allAvalibleColors);
 
   const classes = useStyles();
 
   const changeMainPic = (toto) => {
-    // console.log('toto', toto.style.backgroundImage);
     setMainPic(toto.style.backgroundImage);
   };
-
+  const displayDifferentColor = (pickedColor) => {
+    setColor(pickedColor);
+  };
   return (
     <div className={classes.root}>
       <Grid
@@ -41,14 +45,14 @@ function ChangeLaces({ laces, shoes }) {
         spacing={3}
       >
         <Grid item xs={12} sm={6} md={6} lg={3}>
-          <ShoeCard mainpic={mainpic} shoes={shoes} />
+          <ShoeCard color={color} mainpic={mainpic} shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <Slider changeMainPic={changeMainPic} pictures={pictures} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
-          <SliderColors />
+          <SliderColors displayDifferentColor={displayDifferentColor} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
