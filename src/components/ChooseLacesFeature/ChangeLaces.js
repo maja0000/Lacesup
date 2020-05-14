@@ -1,47 +1,45 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import ShoeCard from './ShoeCard';
-import Button from './Button/ButtonBuy';
-import Slider from './Slider/SliderShoes';
-import SliderColors from './Slider/SliderColors';
-import SliderLaces from './Slider/SliderLaces';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import ShoeCard from "./ShoeCard";
+import Button from "./Button/ButtonBuy";
+import Slider from "./Slider/SliderShoes";
+import SliderColors from "./Slider/SliderColors";
+import SliderLaces from "./Slider/SliderLaces";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: '0 20px 0 20px',
+    margin: "0 20px 0 20px",
   },
   color: {
-    color: 'grey',
+    color: "grey",
   },
 }));
 
 function ChangeLaces({ laces, shoes }) {
-  const [mainpic, setMainPic] = useState('');
+  const [shoe, setShoe] = useState(shoes[0]);
+  const [lace, setLace] = useState(laces[0]);
   // console.log('here', shoes);
 
   let pictures = shoes.map((e) => e.colorVariants[0].image);
 
   const classes = useStyles();
 
-  const changeMainPic = (toto) => {
-    // console.log('toto', toto.style.backgroundImage);
-    setMainPic(toto.style.backgroundImage);
-  };
   return (
     <div className={classes.root}>
       <Grid
         container
-        direction='column'
-        justify='center'
-        alignItems='center'
-        spacing={3}>
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
         <Grid item xs={12} sm={6} md={6} lg={3}>
-          <ShoeCard mainpic={mainpic} shoes={shoes} />
+          <ShoeCard shoe={shoe} lace={lace} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Slider changeMainPic={changeMainPic} pictures={pictures} />
+          <Slider onSelect={setShoe} shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
@@ -49,7 +47,7 @@ function ChangeLaces({ laces, shoes }) {
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
-          <SliderLaces laces={laces} />
+          <SliderLaces laces={laces} onSelect={setLace} />
         </Grid>
         <Grid
           item
@@ -57,7 +55,8 @@ function ChangeLaces({ laces, shoes }) {
           sm={3}
           md={6}
           lg={6}
-          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}>
+          style={{ padding: "0 12px 12px 12px", textAlign: "center" }}
+        >
           <Button />
         </Grid>
       </Grid>
