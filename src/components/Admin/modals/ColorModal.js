@@ -80,6 +80,7 @@ export default function ColorModal({ handleClose, open }) {
       .then(function (data) {
         console.log(data);
       });
+    handleClose();
   };
 
   const handleUpload = (event) => {
