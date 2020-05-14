@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Slider.css';
 
 const colors = [
   'white',
-  '#CE585A',
+  'red',
   '#59794A',
-  '#4B88BF',
-  '#F8C93C',
+  'blue',
+  'yellow',
   '#EE68C2',
   '#5D5D5D',
 ];
-function SliderColors() {
+function SliderColors({ displayDifferentColor }) {
   return (
     <div className="colors-container">
       {colors.map((color, key) => (
@@ -21,6 +21,7 @@ function SliderColors() {
             cursor: ' pointer',
             backgroundColor: `${color}`,
           }}
+          onClick={() => displayDifferentColor(color)}
         />
       ))}
     </div>

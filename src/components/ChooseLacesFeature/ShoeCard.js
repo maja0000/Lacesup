@@ -1,11 +1,16 @@
 import React from "react";
 
-export default function ShoeCard({ shoe, lace }) {
+export default function ShoeCard({ color, shoe, lace }) {
   return (
     <>
       <div
         style={{
-          backgroundImage: `url(${shoe.colorVariants[0].image})`,
+          backgroundImage: `url(${
+            (
+              shoe.colorVariants.find((variant) => variant.color === color) ||
+              shoe.colorVariants[0]
+            ).image
+          })`,
           height: "350px",
           width: "350px",
           backgroundPosition: "center",

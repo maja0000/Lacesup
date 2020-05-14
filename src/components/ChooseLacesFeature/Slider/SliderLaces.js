@@ -2,9 +2,6 @@ import React from "react";
 import "./Slider.css";
 
 function SliderLaces({ laces, onSelect }) {
-  console.log("=>>??>", laces);
-  // console.log(pictures);
-
   return (
     <div className="slider-container">
       {laces.map((lace) => (

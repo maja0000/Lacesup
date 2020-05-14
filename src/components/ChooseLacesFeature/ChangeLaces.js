@@ -20,12 +20,18 @@ const useStyles = makeStyles((theme) => ({
 function ChangeLaces({ laces, shoes }) {
   const [shoe, setShoe] = useState(shoes[0]);
   const [lace, setLace] = useState(laces[0]);
+  const [color, setColor] = useState("white");
   // console.log('here', shoes);
 
-  let pictures = shoes.map((e) => e.colorVariants[0].image);
+  let pictures = shoes.map((each) => each.colorVariants[0].image);
+  let allAvalibleColors = shoes.map((each) => each.colorVariants);
+  // console.log('all', allAvalibleColors);
 
   const classes = useStyles();
 
+  const displayDifferentColor = (pickedColor) => {
+    setColor(pickedColor);
+  };
   return (
     <div className={classes.root}>
       <Grid
@@ -36,14 +42,14 @@ function ChangeLaces({ laces, shoes }) {
         spacing={3}
       >
         <Grid item xs={12} sm={6} md={6} lg={3}>
-          <ShoeCard shoe={shoe} lace={lace} />
+          <ShoeCard shoe={shoe} lace={lace} color={color} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <Slider onSelect={setShoe} shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
-          <SliderColors />
+          <SliderColors displayDifferentColor={displayDifferentColor} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
