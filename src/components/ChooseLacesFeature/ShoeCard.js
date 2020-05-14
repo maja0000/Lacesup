@@ -4,7 +4,6 @@ export default function ShoeCard({ shoes, mainpic }) {
   const [defautpic, setDefautpic] = useState(
     "url('../../pictures/00_Mock_converse_altas-zapas.jpg')"
   );
-
   return (
     <>
       <div
