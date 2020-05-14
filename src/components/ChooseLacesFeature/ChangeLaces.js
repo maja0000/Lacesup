@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ShoeCard from './ShoeCard';
 import Button from './Button/ButtonBuy';
-import Slider from './Slider/Slider';
+import Slider from './Slider/SliderShoes';
 import SliderColors from './Slider/SliderColors';
+import SliderLaces from './Slider/SliderLaces';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,33 +17,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ChangeLaces({ shoes }) {
-  const { mainpic, setMainPic } = useState('');
+function ChangeLaces({ laces, shoes }) {
+  const [mainpic, setMainPic] = useState('');
+  const [lacemask, setLacemask] = useState('');
   // console.log('here', shoes);
-  // console.log(shoes.map((e) => e.brand));
+
   let pictures = shoes.map((e) => e.colorVariants[0].image);
 
   const classes = useStyles();
-  // const changeMainPic = () => {
-  //   setMainPic(event.target.style.background);
-  // };
+
+  const changeMainPic = (toto) => {
+    // console.log('toto', toto.style.backgroundImage);
+    setMainPic(toto.style.backgroundImage);
+  };
+
   return (
     <div className={classes.root}>
       <Grid
         container
-        direction='column'
-        justify='center'
-        alignItems='center'
-        spacing={3}>
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
         <Grid item xs={12} sm={6} md={6} lg={3}>
           <ShoeCard mainpic={mainpic} shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Slider
-            // changeMainPic={changeMainPic}
-            pictures={pictures}
-            shoes={shoes}
-          />
+          <Slider changeMainPic={changeMainPic} pictures={pictures} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE A COLOR FOR THE SNEAKERS</span>
@@ -50,7 +52,7 @@ function ChangeLaces({ shoes }) {
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
-          <Slider pictures={pictures} shoes={shoes} />
+          <SliderLaces laces={laces} />
         </Grid>
         <Grid
           item
@@ -58,7 +60,8 @@ function ChangeLaces({ shoes }) {
           sm={3}
           md={6}
           lg={6}
-          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}>
+          style={{ padding: '0 12px 12px 12px', textAlign: 'center' }}
+        >
           <Button />
         </Grid>
       </Grid>

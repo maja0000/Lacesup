@@ -1,7 +1,7 @@
 import React from 'react';
 import './Slider.css';
 
-function Slider({ shoes, pictures, changeMainPic }) {
+function Slider({ pictures, changeMainPic }) {
   // console.log('=>>??>', shoes);
   // console.log(pictures);
 
@@ -17,7 +17,8 @@ function Slider({ shoes, pictures, changeMainPic }) {
             backgroundPosition: 'center',
             backgroundSize: '100%',
           }}
-          onClick={changeMainPic}
+          // onClick={(event) => handleClick(event)}
+          onClick={(event) => changeMainPic(event.target)}
         />
       ))}
     </div>
