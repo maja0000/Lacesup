@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ShoeModal({ handleClose, open }) {
-  const [fileNames, setFileNames] = React.useState([]);
+  const [fileNames, setFileNames] = React.useState('');
   const [name, setName] = React.useState('');
   const [laceName, setLaceName] = React.useState(
     'Select an svg image of the lace'
@@ -87,21 +87,22 @@ export default function ShoeModal({ handleClose, open }) {
     handleClose();
   };
 
+  const clearFilenames = () => setFileNames('');
+
   const handleUpload = (event) => {
     const files = [...event.target.files];
     const variants = [];
     const filenames = [];
     files.forEach((file) => {
-      setFileNames([...fileNames, file.name]);
       const reader = new FileReader();
+      filenames.push(file.name);
       reader.onloadend = function (event) {
         variants.push({ image: reader.result });
-        filenames.push(file.name);
       };
       reader.readAsDataURL(file);
     });
     setColorVariants(variants);
-    setFileNames(filenames);
+    setFileNames(filenames.join(', '));
   };
 
   const handleLaceImgUpload = (event) => {
@@ -127,7 +128,7 @@ export default function ShoeModal({ handleClose, open }) {
             height: '468px',
           },
         }}>
-        <DialogTitle id='form-dialog-title'>New / Edit Color</DialogTitle>
+        <DialogTitle id='form-dialog-title'>New / Edit Shoe</DialogTitle>
         <Divider />
         <DialogContent>
           <TextField
@@ -145,14 +146,16 @@ export default function ShoeModal({ handleClose, open }) {
           <div className={classes.upload}>
             <label
               htmlFor='icon-button-file'
-              placeholder='Select the images of the shoes'
               style={{
                 width: '100%',
-                minHeight: '40px',
+                padding: '16px 0 8px 0',
+                minWidth: '615px',
                 marginLeft: '31px',
-                marginBottom: '-12px',
+                overflowX: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
               }}>
-              {fileNames.map((file) => file)}
+              {fileNames ? fileNames : 'Select one or multiple images'}
             </label>
             <input
               accept='image/*'
@@ -168,6 +171,7 @@ export default function ShoeModal({ handleClose, open }) {
                 color='disabled'
                 fontSize='large'
                 style={{ padding: '5px' }}
+                onClick={clearFilenames}
               />
               <AttachFileOutlinedIcon
                 color='disabled'
@@ -201,6 +205,7 @@ export default function ShoeModal({ handleClose, open }) {
                 color='disabled'
                 fontSize='large'
                 style={{ padding: '5px' }}
+                onClick={clearFilenames}
               />
               <AttachFileOutlinedIcon
                 color='disabled'
@@ -241,7 +246,7 @@ export default function ShoeModal({ handleClose, open }) {
               fullWidth
               onClick={submitForm}
               style={{ paddingTop: '15px', fontWeight: 'bold' }}>
-              Save color
+              Save shoe
             </Button>
           </div>
         </DialogActions>

@@ -20,6 +20,21 @@ export default function CollectionColors() {
 
   const [open, setOpen] = React.useState(false);
 
+  const [colors, setColors] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch('https://laceup-backend.herokuapp.com/color/')
+      .then((res) => res.json())
+      .then((res) => {
+        setColors(res.result);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      });
+  }, []);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -29,33 +44,46 @@ export default function CollectionColors() {
   };
   return (
     <div>
-      <div className="card-container">
+      <div className='card-container'>
         <Card className={classes.root} onClick={handleClickOpen}>
-          <div className="rectangle"></div>
+          <div className='rectangle'></div>
         </Card>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Card className={classes.root}>
-            <div className="card-buttons">
-              <div className="pen">
-                <CreateIcon />
-              </div>
-              <div className="pen">
-                <GradeIcon />
+        {colors.map((color, index) => (
+          <div
+            style={{ display: 'flex', flexDirection: 'column' }}
+            key={index}
+            onClick={handleClickOpen}>
+            <div
+              className={classes.root}
+              style={{
+                cursor: ' pointer',
+                backgroundImage: `url(${color.file})`,
+                backgroundPosition: 'center',
+                backgroundSize: '100%',
+              }}>
+              <div className='card-buttons'>
+                <div className='pen'>
+                  <CreateIcon />
+                </div>
+                <div className='pen'>
+                  <GradeIcon />
+                </div>
               </div>
             </div>
-          </Card>{' '}
-          <p
-            style={{
-              textAlign: 'center',
-              color: '#404041',
-              margin: '0 20px 0 20px',
-            }}
-          >
-            Blue
-          </p>
-        </div>
+
+            <p
+              key={index}
+              style={{
+                textAlign: 'center',
+                color: '#404041',
+                margin: '0 20px 0 20px',
+              }}>
+              {color.name}
+            </p>
+          </div>
+        ))}
+        <ColorModal handleClose={handleClose} open={open}></ColorModal>
       </div>
-      <ColorModal handleClose={handleClose} open={open}></ColorModal>
     </div>
   );
 }

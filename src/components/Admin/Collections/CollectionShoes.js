@@ -23,8 +23,6 @@ export default function CollectionShoes() {
   const [shoes, setShoes] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
-  let pictures = shoes.map((e) => e.colorVariants[0].image);
-
   React.useEffect(() => {
     fetch('https://laceup-backend.herokuapp.com/')
       .then((res) => res.json())
@@ -36,7 +34,7 @@ export default function CollectionShoes() {
         console.log('Error: ', error);
       });
   }, []);
-  console.log(shoes);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -52,7 +50,10 @@ export default function CollectionShoes() {
       </Card>
 
       {shoes.map((shoe, index) => (
-        <div style={{ display: 'flex', flexDirection: 'column' }} key={index}>
+        <div
+          style={{ display: 'flex', flexDirection: 'column' }}
+          key={index}
+          onClick={handleClickOpen}>
           <div
             className={classes.root}
             style={{
@@ -80,8 +81,6 @@ export default function CollectionShoes() {
             }}>
             {shoe.brand}
           </p>
-
-          <ShoeModal handleClose={handleClose} open={open}></ShoeModal>
         </div>
       ))}
       <ShoeModal handleClose={handleClose} open={open}></ShoeModal>

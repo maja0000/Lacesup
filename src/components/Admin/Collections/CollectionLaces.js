@@ -19,7 +19,20 @@ const useStyles = makeStyles({
 export default function CollectionLaces() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [laces, setLaces] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
+  React.useEffect(() => {
+    fetch('https://laceup-backend.herokuapp.com/laces/')
+      .then((res) => res.json())
+      .then((res) => {
+        setLaces(res.result);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      });
+  }, []);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -33,30 +46,40 @@ export default function CollectionLaces() {
       <Card className={classes.root} onClick={handleClickOpen}>
         <div className='rectangle'></div>
       </Card>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Card className={classes.root}>
-          <div className='card-buttons'>
-            <div className='pen'>
-              <CreateIcon />
-            </div>
-            <div className='pen'>
-              <GradeIcon />
+      {laces.map((lace, index) => (
+        <div
+          style={{ display: 'flex', flexDirection: 'column' }}
+          key={index}
+          onClick={handleClickOpen}>
+          <div
+            className={classes.root}
+            style={{
+              cursor: ' pointer',
+              backgroundImage: `url(${lace.pattern})`,
+              backgroundPosition: 'center',
+              backgroundSize: '100%',
+            }}>
+            <div className='card-buttons'>
+              <div className='pen'>
+                <CreateIcon />
+              </div>
+              <div className='pen'>
+                <GradeIcon />
+              </div>
             </div>
           </div>
-        </Card>
-        <p
-          style={{
-            textAlign: 'center',
-            color: '#404041',
-            margin: '0 20px 0 20px',
-          }}>
-          Grey Hearts
-        </p>
-      </div>
-      <Card className={classes.root}></Card>
-      <Card className={classes.root}></Card>
-      <Card className={classes.root}></Card>
-      <Card className={classes.root}></Card>
+
+          <p
+            key={index}
+            style={{
+              textAlign: 'center',
+              lace: '#404041',
+              margin: '0 20px 0 20px',
+            }}>
+            {lace.name}
+          </p>
+        </div>
+      ))}
       <LaceModal handleClose={handleClose} open={open}></LaceModal>
     </div>
   );
