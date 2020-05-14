@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ShoeCard({ shoes }) {
+export default function ShoeCard({ shoes, mainpic }) {
   // console.log('wohoo', shoes);
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
@@ -34,6 +34,7 @@ export default function ShoeCard({ shoes }) {
       <CardContent>
         <CardMedia
           className={classes.media}
+          // image={mainpic}
           image="/pictures/00_Mock_converse_altas-zapas.jpg"
         >
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>

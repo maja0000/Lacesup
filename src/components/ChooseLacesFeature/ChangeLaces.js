@@ -36,7 +36,7 @@ function ChangeLaces({ shoes }) {
         spacing={3}
       >
         <Grid item xs={12} sm={6} md={6} lg={3}>
-          <ShoeCard shoes={shoes} />
+          <ShoeCard mainpic={mainpic} shoes={shoes} />
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <Slider
@@ -51,7 +51,7 @@ function ChangeLaces({ shoes }) {
         </Grid>
         <Grid item xs={12} sm={6} md={6} lg={6}>
           <span className={classes.color}>CHOOSE YOUR LACES</span>
-          <Slider />
+          <Slider pictures={pictures} shoes={shoes} />
         </Grid>
         <Grid
           item

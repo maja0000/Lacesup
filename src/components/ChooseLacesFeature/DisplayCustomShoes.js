@@ -18,7 +18,7 @@ function DisplayCustomShoes() {
   }, []);
   // console.log('outside', shoes.result);
   // {
-  //   !loading && console.log('data ->', shoes.result);
+  //   !loading && console.log('data ->', shoes);
   // }
 
   return <div>{loading ? 'Loading...' : <ChangeLaces shoes={shoes} />}</div>;
