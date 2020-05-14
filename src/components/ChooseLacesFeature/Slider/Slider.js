@@ -1,17 +1,25 @@
 import React from 'react';
 import './Slider.css';
 
-function Slider({ shoes }) {
+function Slider({ shoes, pictures, changeMainPic }) {
   // console.log('=>>??>', shoes);
-  // shoes.map((shoe) => shoe.brand);
+  // console.log(pictures);
+
   return (
     <div className="slider-container">
-      <div className="slider-element" style={{ cursor: ' pointer' }} />
-      <div className="slider-element" />
-      <div className="slider-element" />
-      <div className="slider-element" />
-      <div className="slider-element" />
-      <div className="slider-element" />
+      {pictures.map((pic, key) => (
+        <div
+          key={key}
+          className="slider-element"
+          style={{
+            cursor: ' pointer',
+            backgroundImage: `url(${pic})`,
+            backgroundPosition: 'center',
+            backgroundSize: '100%',
+          }}
+          onClick={changeMainPic}
+        />
+      ))}
     </div>
   );
 }
