@@ -21,6 +21,7 @@ export default function CollectionLaces() {
   const [open, setOpen] = React.useState(false);
   const [laces, setLaces] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  console.log('laces!', laces);
 
   React.useEffect(() => {
     fetch('https://laceup-backend.herokuapp.com/laces/')
@@ -42,15 +43,16 @@ export default function CollectionLaces() {
   };
 
   return (
-    <div className='card-container'>
+    <div className="card-container">
       <Card className={classes.root} onClick={handleClickOpen}>
-        <div className='rectangle'></div>
+        <div className="rectangle"></div>
       </Card>
       {laces.map((lace, index) => (
         <div
           style={{ display: 'flex', flexDirection: 'column' }}
           key={index}
-          onClick={handleClickOpen}>
+          onClick={handleClickOpen}
+        >
           <div
             className={classes.root}
             style={{
@@ -58,14 +60,22 @@ export default function CollectionLaces() {
               backgroundImage: `url(${lace.pattern})`,
               backgroundPosition: 'center',
               backgroundSize: '100%',
-            }}>
-            <div className='card-buttons'>
-              <div className='pen'>
+            }}
+          >
+            <div className="card-buttons">
+              <div className="pen">
                 <CreateIcon />
               </div>
-              <div className='pen'>
+              {lace.favorite ? (
+                <div className="pen">
+                  <GradeIcon />
+                </div>
+              ) : (
+                ''
+              )}
+              {/* <div className="pen">
                 <GradeIcon />
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -75,7 +85,8 @@ export default function CollectionLaces() {
               textAlign: 'center',
               lace: '#404041',
               margin: '0 20px 0 20px',
-            }}>
+            }}
+          >
             {lace.name}
           </p>
         </div>
