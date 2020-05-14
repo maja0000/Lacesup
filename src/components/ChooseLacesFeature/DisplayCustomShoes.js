@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 function DisplayCustomShoes() {
   const [shoes, setShoes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch('https://laceup-backend.herokuapp.com/')

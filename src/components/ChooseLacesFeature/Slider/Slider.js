@@ -6,11 +6,11 @@ function Slider({ shoes, pictures, changeMainPic }) {
   // console.log(pictures);
 
   return (
-    <div className="slider-container">
+    <div className='slider-container'>
       {pictures.map((pic, key) => (
         <div
           key={key}
-          className="slider-element"
+          className='slider-element'
           style={{
             cursor: ' pointer',
             backgroundImage: `url(${pic})`,
