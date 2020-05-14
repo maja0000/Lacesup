@@ -1,13 +1,14 @@
 import React from 'react';
 import './Slider.css';
 
-function Slider({ shoes, pictures, changeMainPic }) {
-  // console.log('=>>??>', shoes);
+function SliderLaces({ laces }) {
+  console.log('=>>??>', laces);
   // console.log(pictures);
+  const patterns = laces.map((one) => one.laceImg);
 
   return (
     <div className="slider-container">
-      {pictures.map((pic, key) => (
+      {patterns.map((pic, key) => (
         <div
           key={key}
           className="slider-element"
@@ -17,11 +18,12 @@ function Slider({ shoes, pictures, changeMainPic }) {
             backgroundPosition: 'center',
             backgroundSize: '100%',
           }}
-          onClick={changeMainPic}
+          // onClick={(event) => handleClick(event)}
+          //   onClick={(event) => changeMainPic(event.target)}
         />
       ))}
     </div>
   );
 }
 
-export default Slider;
+export default SliderLaces;
