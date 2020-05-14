@@ -24,9 +24,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ShoeCard() {
+export default function ShoeCard({ shoes }) {
+  // console.log('wohoo', shoes);
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  // const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.card} variant="outlined">
